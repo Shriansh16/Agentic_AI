@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-## web search agent
+# web search agent
 web_search_agent=Agent(
     name="Web Search Agent",
     role="Search the web for the information",
@@ -19,7 +19,7 @@ web_search_agent=Agent(
 
 )
 
-## Financial agent
+# Financial agent
 finance_agent=Agent(
     name="Finance AI Agent",
     model=Groq(id="llama3-groq-70b-8192-tool-use-preview"),
