@@ -2,6 +2,7 @@ from phi.agent import Agent
 import phi.api
 from phi.model.openai import OpenAIChat
 from phi.tools.yfinance import YFinanceTools
+import pandas as pd
 from phi.tools.duckduckgo import DuckDuckGo
 from dotenv import load_dotenv
 from phi.model.groq import Groq
