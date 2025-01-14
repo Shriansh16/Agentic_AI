@@ -6,3 +6,8 @@ duckduckgo-search
 fastapi
 uvicorn
 groq
+pgvector
+SQLAlchemy
+psycopg2-binary
+phi-assistant
+requests
