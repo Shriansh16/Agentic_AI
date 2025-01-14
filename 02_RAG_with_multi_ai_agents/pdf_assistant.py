@@ -1,31 +1,27 @@
-import typer
-from typing import Optional,List
-from phi.assistant import Assistant        #it will assist us in different tasks
-from phi.storage.assistant.postgres import PgAssistantStorage   #for managing and storing data in a PostgreSQL database
-from phi.knowledge.pdf import PDFUrlKnowledgeBase    #for managing and storing data in a PostgreSQL database
+from phi.knowledge.pdf import PDFUrlKnowledgeBase
 from phi.vectordb.pgvector import PgVector
-from phi.model.groq import Groq    #for working with vector databases, specifically leveraging the pgvector extension for PostgreSQL. It allows for efficient storage and retrieval of vector embeddings
-import os
+from phi.model.ollama import Ollama
 from phi.agent import Agent
-from dotenv import load_dotenv
-load_dotenv()
+from typing import List
+from phi.embedder.ollama import OllamaEmbedder
 
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
-
+# Database connection URL
 db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
 
+# Load the knowledge base from a PDF
 knowledge_base = PDFUrlKnowledgeBase(
     urls=["https://phi-public.s3.amazonaws.com/recipes/ThaiRecipes.pdf"],
     vector_db=PgVector(
-        table_name="thai_recipes",
-        db_url=db_url
+        table_name="recipes",
+        db_url=db_url,
+        embedder=OllamaEmbedder(model="nomic-embed-text", dimensions=768)
     )
 )
-knowledge_base.load()
+knowledge_base.load(recreate=False)
 
 # Create the RAG agent
 agent = Agent(
-    model=Groq(id="llama3-groq-70b-8192-tool-use-preview"),
+    model=Ollama(id="llama3.2"),
     knowledge=knowledge_base,  # Add the knowledge base to the agent
     show_tool_calls=True,
     markdown=True,

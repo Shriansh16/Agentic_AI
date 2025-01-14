@@ -10,4 +10,6 @@ pgvector
 SQLAlchemy
 psycopg2-binary
 phi-assistant
-requests
+request
+pypdf
+psycopg[binary]
