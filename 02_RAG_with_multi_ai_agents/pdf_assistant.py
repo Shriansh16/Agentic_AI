@@ -22,7 +22,7 @@ knowledge_base.load(recreate=False)
 # Create the RAG agent
 agent = Agent(
     model=Ollama(id="llama3.2"),
-    knowledge=knowledge_base,  # Add the knowledge base to the agent
+    knowledge=knowledge_base,  # Add the knowledge base to agent
     show_tool_calls=True,
     markdown=True,
 )
