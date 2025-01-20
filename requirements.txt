@@ -13,3 +13,4 @@ phi-assistant
 request
 pypdf
 psycopg[binary]
+google-generativeai
