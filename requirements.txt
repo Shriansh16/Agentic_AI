@@ -14,3 +14,4 @@ request
 pypdf
 psycopg[binary]
 google-generativeai
+crewai[tools]
