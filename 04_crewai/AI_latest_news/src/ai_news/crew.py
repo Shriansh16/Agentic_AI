@@ -9,8 +9,8 @@ load_dotenv()
 class AiNews():
 	"""AiNews crew"""
 
-	agents_config = 'config/agents.yaml'
-	tasks_config = 'config/tasks.yaml'
+	agents_config = '04_crewai/AI_latest_news/src/ai_news/config/agents.yaml'
+	tasks_config = '04_crewai/AI_latest_news/src/ai_news/config/tasks.yaml'
 
 	@agent
 	def retrieve_news(self) -> Agent:                    ##this agent will do google search and retrieve news websites
