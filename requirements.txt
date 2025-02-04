@@ -16,3 +16,5 @@ psycopg[binary]
 google-generativeai
 crewai
 crewai[tools]
+crewai_tools
+pysbd
