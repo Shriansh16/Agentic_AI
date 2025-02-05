@@ -1,6 +1,7 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool, FileWriterTool
+from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,6 +12,7 @@ class AiNews():
 
 	agents_config = '04_crewai/AI_latest_news/src/ai_news/config/agents.yaml'
 	tasks_config = '04_crewai/AI_latest_news/src/ai_news/config/tasks.yaml'
+	llm=Groq(id="llama-3.1-8b-instant")
 
 	@agent
 	def retrieve_news(self) -> Agent:                    ##this agent will do google search and retrieve news websites
@@ -32,7 +34,7 @@ class AiNews():
 	def ai_news_writer(self) -> Agent:
 		return Agent(
 			config=self.agents_config['ai_news_writer'],         ##will write a concise summary of the collected data from each website
-			tools=[],
+			tools=[llm=self.llm],
 			verbose=True
 		)
 	

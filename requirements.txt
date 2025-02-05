@@ -18,3 +18,4 @@ crewai
 crewai[tools]
 crewai_tools
 pysbd
+groq

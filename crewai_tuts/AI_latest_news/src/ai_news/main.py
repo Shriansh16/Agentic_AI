@@ -2,7 +2,7 @@
 import sys
 import warnings
 from datetime import datetime
-from crew import AiNews
+from crewai_tuts.AI_latest_news.src.ai_news.crew import AiNews
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
