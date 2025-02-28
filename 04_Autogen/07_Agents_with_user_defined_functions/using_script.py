@@ -90,6 +90,10 @@ print(executor.format_functions_for_prompt())
 code_writer_agent_system_message += executor.format_functions_for_prompt()
 # The complete prompt now contains additional information about our used defined functions
 print(code_writer_agent_system_message)
+"""Why is This Important?
+By appending the function descriptions to the system prompt, the AI agent knows about the functions and can call them when needed.
+Without this step, the code-writing agent wouldn’t know that these helper functions exist and
+ would try to generate redundant code instead of using the predefined functions."""
 
 import pdb; pdb.set_trace()
 
